@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="F:/extention-jar/Simbad/simbad-1.4.jar" sourcepath="F:/extention-jar/Simbad/simbad-1.4.src/simbad-1.4/src">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/F:/extention-jar/Simbad/simbad-1.4.src/simbad-1.4/src/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/java3D"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
