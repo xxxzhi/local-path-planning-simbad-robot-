@@ -4,10 +4,11 @@
 This is my robot elective course test. My school is the south China university of Technology. I had code a experiment framework of robot local path select algrithms based on simbad-1.4 .
 
 ##Demo img
-![](https://github.com/xxxzhi/local-path-planning-simbad-robot-/blob/master/demo2.png)
 
-![](https://github.com/xxxzhi/local-path-planning-simbad-robot-/blob/master/demo1.png)
+![](https://github.com/xxxzhi/local-path-planning-simbad-robot-/blob/master/demo1.png?raw=true)
 
+
+![](https://github.com/xxxzhi/local-path-planning-simbad-robot-/blob/master/demo2.png?raw=true)
 ##Code Structs
 The algorithm package contains some local path select algrithms- Artificial Potential Field、 Grid method in local path select. If you want to do a new experiment for you own path select algrithms, you can extand the AbsPathControl. 
 
