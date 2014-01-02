@@ -5,7 +5,7 @@ import javax.vecmath.Vector3d;
 
 import simbad.sim.RangeSensorBelt;
 
-import com.houzhi.simbad.PathRobot;
+import com.houzhi.simbad.robot.PathRobot;
 
 
 /**

@@ -1,6 +1,7 @@
 package com.houzhi.simbad;
 
 
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,6 +14,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import com.houzhi.simbad.algorithm.AbsPathControl;
+import com.houzhi.simbad.algorithm.PotentialControl;
+import com.houzhi.simbad.env.HardEnvironmentDescription;
+import com.houzhi.simbad.robot.PathRobot;
 
 import simbad.demo.DemoManager;
 import simbad.gui.AgentInspector;
@@ -37,7 +43,7 @@ public class RobotTestSimBad extends JFrame implements ActionListener {
 	
 	static final String version="1.4";
 	static int SIZEX = 800;
-	static int SIZEY = 700;
+	static int SIZEY = 750;
 	JMenuBar menubar;
     JDesktopPane desktop;
     WorldWindow worldWindow=null;
@@ -139,20 +145,28 @@ public class RobotTestSimBad extends JFrame implements ActionListener {
             return null;
     }
     boolean hasStop= false ;
+    
+    private void createResult(){
+    	
+    }
+    
     public void stop(){
 //    	releaseRessources();
     	if(hasStop)
     		return ;
     	hasStop = true ;
     	JTextField jtext = new JTextField();
-		add(jtext);
+    	
+    	Rectangle rec = controlWindow.getBounds();
+    	jtext.setBounds(rec.x,rec.y+rec.height + 10, rec.width,50);
+    	desktop.add(jtext);
+    	
 		jtext.setVisible(true);
 		Agent agent = (Agent) simulator.getAgentList().get(simulator.getAgentList().size() - 1 ) ;
 		String s = agent.getName()+"\n    Counter:"+ agent.getCounter() +"\n Timer:"+agent.getLifeTime()
 				+"\n Odometer:"+agent.getOdometer();
 		System.out.println(s);
 		jtext.setText(s);
-		jtext.setLocation(400, 30);
     }
     
     
@@ -207,21 +221,21 @@ public class RobotTestSimBad extends JFrame implements ActionListener {
         //request antialising 
         System.setProperty("j3d.implicitAntialiasing", "true");
 
-        RobotTestSimBad s = new RobotTestSimBad(new simbad.demo.BaseDemo() ,backgroundMode);
+        
         final HardEnvironmentDescription myEnv1 = new HardEnvironmentDescription();
-		myEnv1.addPotentialRobot();
-        s.start(myEnv1 );
+		AbsPathControl control = myEnv1.addPotentialRobot();
+		final RobotTestSimBad s = new RobotTestSimBad(myEnv1,false);
+		control.setCompleteInterface(new AbsPathControl.OnCompleteInterface() {
+			
+			@Override
+			public void onCompleteListener() {
+				s.stop();
+			}
+		});
      }
 
 
     public JDesktopPane getDesktopPane() {
         return desktop;
     }
-
-    /////////////////////////
-    // Class methods
-    public static RobotTestSimBad getSimbadInstance() {
-        return simbadInstance;
-    }
-
 }

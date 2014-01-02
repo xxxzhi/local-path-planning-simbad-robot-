@@ -5,8 +5,8 @@ import java.util.Random;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
 
-import com.houzhi.simbad.Constant;
-import com.houzhi.simbad.PathRobot;
+import com.houzhi.simbad.robot.PathRobot;
+import com.houzhi.simbad.util.Constant;
 
 public class PotentialControl extends AbsPathControl {
 
